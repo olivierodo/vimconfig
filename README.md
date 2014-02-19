@@ -57,7 +57,7 @@
 
 `foreahc` `forech` écrira  __foreach__
 
-##Raccouries
+##Raccourcies
 
 ### Mode Normal
 
