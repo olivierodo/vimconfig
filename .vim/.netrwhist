@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/exploit/.vim/bundle/checksyntax_vim/autoload'
+let g:netrw_dirhist_2='/home/exploit/.vim/plugin'
+let g:netrw_dirhist_3='/home/exploit/.subversion'
+let g:netrw_dirhist_4='/home/exploit'
