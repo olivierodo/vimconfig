@@ -91,47 +91,45 @@ autocmd BufNewFile,BufRead *.html.twig set filetype=html.twi
 autocmd BufWritePost .vimrc source %
 
 
-nnoremap --  :EnableFastPHPFolds<CR>
-nnoremap ++  :DisablePHPFolds<CR>
-"nnoremap ²  :!php -l %<CR>
-nnoremap ²  :NERDTreeToggle<CR>
-
+" tabs
 nnoremap th  :tabfirst<CR>
 nnoremap ty  :tabnext<CR>
 nnoremap tr  :tabprev<CR>
 nnoremap tl  :tablast<CR>
 nnoremap te  :Texplore<CR>
 nnoremap tt  :tabedit<Space>
-nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
-" Alternatively use
-" "nnoremap th :tabnext<CR>
-" "nnoremap tl :tabprev<CR>
 nnoremap tn :tabnew<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
-nnoremap <A-Down> :m .+1<CR>==
+"lines
 nnoremap <A-Up> :m .-2<CR>==
-
+nnoremap <A-Down> :m .+1<CR>==
 nnoremap <C-Down> :t .<CR>==
 nnoremap <C-Up> :t .-2<CR>==
-" ceci est un commentaire
+
+"plugins
+nnoremap ²  :NERDTreeToggle<CR>
 nnoremap <C-S> :w<CR>
 nnoremap <C-F7> :Tabularize /=<CR>
-nnoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
+nnoremap <C-A>  :FufTaggedFile<CR>
+
+"php"
+autocmd FileType php nnoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
+autocmd FileType php noremap <C-L> :!pu %<CR>
+autocmd FileType php nnoremap ++  :DisablePHPFolds<CR>
+autocmd FileType php nnoremap --  :EnableFastPHPFolds<CR>
+autocmd FileType * noremap <C-K> :call ClearFile()<CR>
 
 "Insert Mode"
 inoremap <C-S> <C-O>:w<CR>
-inoremap <C-Space> <C-n>
-inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-inoremap <C-F7> <C-O>:Tabularize /=<CR>
-inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 inoremap <C-Z> <C-O>:undo<CR>
+inoremap <C-F7> <C-O>:Tabularize /=<CR>
+autocmd FileType php inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+autocmd FileType php inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 
-autocmd FileType php noremap <C-L> :!pu %<CR>
-autocmd FileType * noremap <C-K> :call ClearFile()<CR>
 
 
 
@@ -140,18 +138,17 @@ autocmd FileType * noremap <C-K> :call ClearFile()<CR>
 "nnoremap <Esc>le  :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  egrep -irn --exclude-dir=".svn" "<cword>" /data/www/lcl/<CR>
 "nnoremap <Esc>²   :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  fclass <cword><CR>
 "PERSONAL FUNCTION"
-nnoremap <F9>   :call GoToClass('tabedit')<CR>
-nnoremap <F3>   :call GoToZendClass('tabedit')<CR>
-nnoremap <F4>   :call GoToParentZendClass('tabedit')<CR>
-nnoremap <F5>   :call GoToZendClass('e')<CR>
-nnoremap <F6>   :call GoToZendClass('vsplit')<CR>
-nnoremap <F7>   :call GoToZendClass('split')<CR>
-nnoremap <F11>  :call SearchForMethodInLibrary()<CR> 
-nnoremap <F12>  :call SearchForMethod()<CR> 
-nnoremap <C-A>  :FufTaggedFile<CR>
-nnoremap 2+  :call Alog()<CR>
-nnoremap 1+  :call Agp()<CR>
+autocmd FileType php nnoremap <F9>   :call GoToClass('tabedit')<CR>
+autocmd FileType php nnoremap <F3>   :call GoToZendClass('tabedit')<CR>
+autocmd FileType php nnoremap <F4>   :call GoToParentZendClass('tabedit')<CR>
+autocmd FileType php nnoremap <F5>   :call GoToZendClass('e')<CR>
+autocmd FileType php nnoremap <F6>   :call GoToZendClass('vsplit')<CR>
+autocmd FileType php nnoremap <F7>   :call GoToZendClass('split')<CR>
+autocmd FileType php nnoremap <F11>  :call SearchForMethodInLibrary()<CR> 
+autocmd FileType php nnoremap <F12>  :call SearchForMethod()<CR> 
+autocmd FileType php nnoremap 2+  :call Alog()<CR>
+autocmd FileType php nnoremap 1+  :call Agp()<CR>
 
 
-"Config des plugins
+"Config plugins
 let DisableAutoPHPFolding = 1
