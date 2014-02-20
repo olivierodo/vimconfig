@@ -1,3 +1,6 @@
+"pathogen infection
+execute pathogen#infect()
+
 " Don't highlight search terms
 "set nohlsearch
 
