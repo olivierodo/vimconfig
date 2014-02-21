@@ -18,7 +18,7 @@ set tabstop=4
 
 " Alternative syntax highlighting colours for a dark background
 "syntax on
-set background=dark
+"set background=dark
 
 set number
 
