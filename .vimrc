@@ -17,7 +17,8 @@ set tabstop=4
 
 
 " Alternative syntax highlighting colours for a dark background
-"syntax on
+syntax on
+colorscheme elflord
 "set background=dark
 
 set number
