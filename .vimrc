@@ -15,6 +15,7 @@ set expandtab
 " Tab spacing of 4
 set tabstop=4
 
+set autoread
 
 " Alternative syntax highlighting colours for a dark background
 syntax on
@@ -115,7 +116,7 @@ nnoremap <C-Down> :t .<CR>==
 nnoremap <C-Up> :t .-2<CR>==
 
 "plugins
-nnoremap ²  :NERDTreeToggle<CR>
+nnoremap ²  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>
 nnoremap <C-S> :w<CR>
 nnoremap <C-F7> :Tabularize /=<CR>
 nnoremap <C-A>  :FufTaggedFile<CR>
