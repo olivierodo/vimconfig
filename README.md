@@ -125,6 +125,8 @@
 
 ### Mode Insert
 
+`CTRL + espace` aide syntaxique
+
 ##### Divers
 
 `CTRL + S` Enregistre le fichier courant

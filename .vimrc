@@ -136,7 +136,23 @@ autocmd FileType php inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 autocmd FileType php inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 
 
+" autocompletion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
 
+imap <C-space> <C-x><C-o>
+imap <C-@> <C-Space>
+
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"inoremap <C-Space> <C-x><C-o>
+"inoremap <C-@> <C-Space>
 
 "nnoremap <Esc>e  :!egrep -irn --exclude-dir=\".svn\"<Space>
 "nnoremap <Esc>e  :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  egrep -irn --exclude-dir=".svn" "<cword>" .<CR>
