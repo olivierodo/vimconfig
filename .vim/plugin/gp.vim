@@ -1,36 +1,35 @@
-:let b:GPNumber = ""
+:let g:GPNumber = ""
 :function! Agp()
 :
-:   if (!exists ("b:GPNumber" ))
-:     let b:GPNumber=""
+:   if (!exists ("g:GPNumber" ))
+:     let g:GPNumber=""
 :   endif
 :
-:   if "" !=  b:GPNumber
-:      let confirmVal    = confirm("Lancer le GP numéro [".b:GPNumber."] ?", "&Oui\n&Non", 1)
-:      if confirmVal == 'N'
-:         let b:GPNumber = ""
+:   if "" !=  g:GPNumber
+:      let confirmVal    = confirm("Lancer le GP numéro [".g:GPNumber."] ?", "&Oui\n&Non", 1)
+:      if (confirmVal == 2)
+:         let g:GPNumber = ""
 :      endif
 :   endif
 :
-:   if "" ==  b:GPNumber
-:      let result = inputdialog("Quel GP souhaitez-vous lancer ? ")
-:      if result == ""
+:   if "" ==  g:GPNumber
+:      let b:result = inputdialog("Quel GP souhaitez-vous lancer ? ")
+:      if b:result == ""
 :        echoerr  "Lancement annulé"
 :        return
 :      endif
-:      let b:GPNumber = result
+:      let g:GPNumber = b:result
 :   endif
-":   execute '!ag ' . b:GPNumber
-:   echom "GP en cours d'execution"
-:   let gpresult = system( "ag " . b:GPNumber )
+:   echom "GP ".g:GPNumber." en cours d'execution"
+:   let gpresult = system( "ag " . g:GPNumber )
 :   let result   =  split(gpresult, "\n")
 :   let c  = 0
 :   let output    = []
 :        if len(result) >= 1
 :            while c < len(result)
 :                let str =  strpart(result[c], -1, 4)
-:                if ( str == ' To' || str == 'BU' || str == 'Te')
-:                    call add(output, r)
+:                if ( str == 'Tot' || str == 'BUI' || str == 'Tes' || str == 'Exc')
+:                    call add(output, result[c])
 :                endif
 :                let c +=1
 :            endwhile
