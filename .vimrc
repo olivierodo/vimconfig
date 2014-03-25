@@ -169,6 +169,8 @@ autocmd FileType php nnoremap <F11>  :call SearchForMethodInLibrary()<CR>
 autocmd FileType php nnoremap <F12>  :call SearchForMethod()<CR> 
 autocmd FileType php nnoremap 2+  :call Alog()<CR>
 autocmd FileType php nnoremap 1+  :call Agp()<CR>
+autocmd FileType php nnoremap 7+  :call PuGroup()<CR>
+autocmd FileType php nnoremap 8+  :call AddPuGroup()<CR>
 
 
 "Config plugins

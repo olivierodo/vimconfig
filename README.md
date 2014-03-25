@@ -115,6 +115,10 @@
 
 `CTRL + L` Lance PHPUnit sur le fichier courant
 
+`7+` Lance PHPUnit sur un groupe
+
+`8+` Lance PHPUnit sur test se trouvant sous la position actuel du curseur
+
 
 ##### ASTRIA
 
