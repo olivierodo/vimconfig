@@ -110,10 +110,14 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
 "lines
-nnoremap <A-Up> :m .-2<CR>==
-nnoremap <A-Down> :m .+1<CR>==
+nnoremap <a-up> :m .-2<cr>==
+nnoremap <a-down> :m .+1<cr>==
 nnoremap <C-Down> :t .<CR>==
 nnoremap <C-Up> :t .-2<CR>==
+
+nnoremap <a-Left> :vertical resize -5<CR>
+nnoremap <a-Right> :vertical resize +5<CR>
+
 
 "plugins
 nnoremap ²  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>
@@ -136,6 +140,18 @@ autocmd FileType php inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 autocmd FileType php inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 
 
+"desactivate arrows
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+
 " autocompletion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -150,6 +166,13 @@ imap <C-@> <C-Space>
 
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" GIT
+nnoremap <lt>s :Gstatus<cr>==
+nnoremap <lt>m :Gcommit<cr>==
+nnoremap <lt>a :Gwrite<cr>==
+nnoremap <lt>b :Gblame<cr>==
+
 
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
