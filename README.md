@@ -136,11 +136,3 @@
 `CTRL + S` Enregistre le fichier courant
 
 `CTRL + Z` Annule la dernière modification
-
-####Plugin
-
-`CTRL + F7` Indente le bloc courant
-
-##### PHP
-
-`CTRL + F5` Ajoute les getters/setters de la propriété sous le curseur
