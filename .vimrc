@@ -1,6 +1,8 @@
 "pathogen infection
 execute pathogen#infect()
 
+set noeb vb t_vb=
+
 " Don't highlight search terms
 "set nohlsearch
 
@@ -93,6 +95,7 @@ set pastetoggle=<F12>
 "  autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twi
+autocmd BufNewFile,BufRead *.handlebars set filetype=html
 autocmd BufWritePost .vimrc source %
 
 
@@ -110,8 +113,10 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
 "lines
-nnoremap <a-up> :m .-2<cr>==
-nnoremap <a-down> :m .+1<cr>==
+nnoremap <M-K> :m .-2<CR>==
+nnoremap <M-J> :m .+1<CR>==
+"nnoremap <A-Up> :m .-2<CR>==
+"nnoremap <A-Down> :m .+1<CR>==
 nnoremap <C-Down> :t .<CR>==
 nnoremap <C-Up> :t .-2<CR>==
 
@@ -120,17 +125,19 @@ nnoremap <a-Right> :vertical resize +5<CR>
 
 
 "plugins
-nnoremap ²  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>
+nnoremap §  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>
 nnoremap <C-S> :w<CR>
 nnoremap <C-F7> :Tabularize /=<CR>
-nnoremap <C-A>  :FufTaggedFile<CR>
+"nnoremap <C-A>  :FufTaggedFile<CR>
+nnoremap <C-space> :CtrlP<CR>
+nnoremap <C-@> <C-Space> :CtrlP<CR>
 
 "php"
 autocmd FileType php nnoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 autocmd FileType php noremap <C-L> :!pu %<CR>
 autocmd FileType php nnoremap ++  :DisablePHPFolds<CR>
 autocmd FileType php nnoremap --  :EnableFastPHPFolds<CR>
-autocmd FileType * noremap <C-K> :call ClearFile()<CR>
+"autocmd FileType * noremap <C-K> :call ClearFile()<CR>
 
 "Insert Mode"
 inoremap <C-S> <C-O>:w<CR>
@@ -140,6 +147,8 @@ autocmd FileType php inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 autocmd FileType php inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
 
 
+" Git
+nnoremap <leader>a :Gwrite<CR>
 "desactivate arrows
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -152,30 +161,9 @@ imap <left> <nop>
 imap <right> <nop>
 
 
-" autocompletion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-
-imap <C-space> <C-x><C-o>
-imap <C-@> <C-Space>
-
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" GIT
-nnoremap <lt>s :Gstatus<cr>==
-nnoremap <lt>m :Gcommit<cr>==
-nnoremap <lt>a :Gwrite<cr>==
-nnoremap <lt>b :Gblame<cr>==
-
-
-"inoremap <C-Space> <C-x><C-o>
-"inoremap <C-@> <C-Space>
 
 "nnoremap <Esc>e  :!egrep -irn --exclude-dir=\".svn\"<Space>
 "nnoremap <Esc>e  :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  egrep -irn --exclude-dir=".svn" "<cword>" .<CR>
