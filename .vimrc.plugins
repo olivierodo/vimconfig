@@ -1,0 +1,45 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'itchyny/lightline.vim'
+Plug 'ap/vim-css-color'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-fugitive'
+Plug 'chrisbra/csv.vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'diepm/vim-rest-console'
+Plug 'avakhov/vim-yaml'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'godlygeek/tabular'
+Plug 'ervandew/supertab'
+Plug 'flazz/vim-colorschemes'
+call plug#end()  " required
+
+"LightLine
+set laststatus=2
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [['mode', 'paste', 'spell'], ['fileencoding', 'relativepath', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly']]
+\ },
+\ 'component_type': {
+\   'readonly': 'error'
+\ },
+\ }
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+autocmd User ALELint call s:MaybeUpdateLightline()
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
+
+"Ack.vim
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!

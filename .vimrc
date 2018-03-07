@@ -1,188 +1,106 @@
-"pathogen infection
-execute pathogen#infect()
+if filereadable(expand("~/.vimrc.plugins"))
+  source ~/.vimrc.plugins
+endif
 
-set noeb vb t_vb=
+autocmd BufWritePost .vimrc source % " -> auto-update on vimrc updates
 
-" Don't highlight search terms
-"set nohlsearch
+"set noeb vb t_vb=  -> I don't what is that...
+"set cinkeys=0{,0},:,0#,!,!^F  -> I don't know as well
+"set list  -> I don't know
+"set listchars=tab:›\ ,trail:•,extends:#,nbsp:. -> Highlight problematic whitespace
 
 " My preferred autoindent features
 filetype indent off
 set autoindent
 set nocindent
 
-" Insert spaces when the tab key is hit
-set expandtab
+set expandtab " -> Insert spaces when the tab key is hit
 
-" Tab spacing of 4
-set tabstop=4
+set tabstop=2 " -> Tab spacing of 4
 
-set autoread
+set autoread " -> Detect if the file change outside of vim
 
-" Alternative syntax highlighting colours for a dark background
-syntax on
-colorscheme elflord
-"set background=dark
+syntax on " -> Alternative syntax highlighting colours for a dark background
+colorscheme mango " -> specific color
 
-set number
+set number " -> Enable number
 
-set smartindent
-set shiftwidth=4
-set cinkeys=0{,0},:,0#,!,!^F
+set smartindent " -> autoindent for new lines
+set shiftwidth=2 " -> indentation size
 
-set mousehide " Hide the mouse cursor while typing
-scriptencoding utf-8
-set history=1000 " Store a ton of history (default is 20)
-"    set spell " Spell checking on
-set hidden " Allow buffer switching without saving
-set tabpagemax=15 " Only show 15 tabs
-set showmode " Display the current mode
-"set paste
-set cursorline " Highlight current line
-" Default Colors for CursorLine
+set mousehide " -> Hide the mouse cursor while typing
+scriptencoding utf-8 " -> use utf-8 encrypt
+set history=1000 " -> Store a ton of history
+set hidden " -> Allow buffer switching without saving
+set showmode " -> Display the current mode
+set cursorline " -> Highlight current line
 
-" Change Color when entering Insert Mode
-"autocmd InsertEnter * highlight  CursorLine ctermbg=red ctermfg=None
+hi TabLineFill ctermfg=Red ctermbg=DarkGreen " -> color of the tab band background
+hi TabLine ctermfg=Black ctermbg=Red " -> color of the other tab
+hi TabLineSel ctermfg=Yellow ctermbg=Black " -> color of the current tab
 
 
-" COLORS --------------------
-" Revert Color to default when leaving Insert Mode
-"autocmd InsertEnter * highlight  CursorLine ctermbg=  ctermfg=None
-"autocmd InsertLeave * highlight  CursorLine ctermbg=none ctermfg=None
 
-hi TabLineFill ctermfg=Red ctermbg=DarkGreen
-hi TabLine ctermfg=Black ctermbg=Red
-hi TabLineSel ctermfg=Yellow ctermbg=Black
+set showmatch " ->Show matching brackets/parenthesis
+set incsearch " -> Find as you type search
+set hlsearch " -> Highlight search terms
+set winminheight=0 " -> Windows can be 0 line high
+set ignorecase " ->Case insensitive search
+set smartcase " -> Case sensitive when uc present
+set wildmenu " -> Show list instead of just completing (command line)
+set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all. (command line)
+set scrolljump=5 " -> Lines to scroll when cursor leaves screen
+set scrolloff=3 " -> Minimum lines to keep above and below cursor
 
+set splitright " -> open split file on the right
+set splitbelow " -> open split file below
+set fileformat=unix " -> file format unix
 
-set showmatch " Show matching brackets/parenthesis
-set incsearch " Find as you type search
-set hlsearch " Highlight search terms
-set winminheight=0 " Windows can be 0 line high
-set ignorecase " Case insensitive search
-set smartcase " Case sensitive when uc present
-set wildmenu " Show list instead of just completing
-set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
-"set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
-set scrolljump=5 " Lines to scroll when cursor leaves screen
-set scrolloff=3 " Minimum lines to keep above and below cursor
-"set foldenable " Auto fold code
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-
-set splitright
-set splitbelow 
-set fileformat=unix
-
-set nocompatible   " Disable vi-compatibility
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
+set nocompatible   " -> Disable vi-compatibility
+set laststatus=2   " -> Always show the statusline
+set encoding=utf-8 " -> Necessary to show Unicode glyphs
 set noshowmode
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
-let g:Powerline_symbols = 'fancy'
+set t_Co=256 " -> Explicitly tell Vim that the terminal supports 256 colors
 
-"Longeur de la ligne
-match ErrorMsg /\%>120v.\+/
+match ErrorMsg /\%>120v.\+/ " -> max lign length
 
-" }
-"
-" " Formatting {
-set nowrap " Wrap long lines
-set pastetoggle=<F12>
-"set shellcmdflag=-ic
-"set softtabstop=4 " Let backspace delete indent
-"set matchpairs+=<:> " Match, to be used with %
-"  autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
-autocmd BufNewFile,BufRead *.html.twig set filetype=html.twi
+set nowrap " -> Don't Wrap long lines
+set pastetoggle=<leader>a| " -> Define paste toogle
+
 autocmd BufNewFile,BufRead *.handlebars set filetype=html
-autocmd BufWritePost .vimrc source %
 
 
 " tabs
-nnoremap th  :tabfirst<CR>
-nnoremap ty  :tabnext<CR>
-nnoremap tr  :tabprev<CR>
-nnoremap tl  :tablast<CR>
-nnoremap te  :Texplore<CR>
-nnoremap tt  :tabedit<Space>
-nnoremap tm  :tabm<Space>
-nnoremap td  :tabclose<CR>
-nnoremap tn :tabnew<CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap th  :tabfirst<CR>|  " -> Go to first tab
+nnoremap ty  :tabnext<CR>| " ->  Go to the right tab
+nnoremap tr  :tabprev<CR>| " -> Go to previous tab
+nnoremap tl  :tablast<CR>| " -> Go to last tab
+nnoremap te  :Texplore<CR>| " -> Open a new tab explore
+nnoremap tt  :tabedit<Space>| " -> open a file in a new tab
+nnoremap td  :tabclose<CR>| " -> close the current tab
+nnoremap tn :tabnew<CR>| " -> open a new tab
 
-"lines
-nnoremap <M-K> :m .-2<CR>==
-nnoremap <M-J> :m .+1<CR>==
-"nnoremap <A-Up> :m .-2<CR>==
-"nnoremap <A-Down> :m .+1<CR>==
-nnoremap <C-Down> :t .<CR>==
-nnoremap <C-Up> :t .-2<CR>==
+nnoremap <leader>k :m .-2<CR>==| " -> move the line to the top
+nnoremap <leader>j :m .+1<CR>==| " -> move the line to the bottom
+nnoremap <leader>jj :t .<CR>==| " -> duplicate the line to the botton
+nnoremap <leader>kk :t .-2<CR>==| " -> duplicate a line to the up
 
-nnoremap <a-Left> :vertical resize -5<CR>
-nnoremap <a-Right> :vertical resize +5<CR>
+nnoremap <leader><leader>  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>| " -> open NERDTree
+nnoremap <C-S> :w<CR>| " -> save the file
+nnoremap <C-F7> :Tabularize /=<CR>| " ->
 
+inoremap <C-S> <C-O>:w<CR>| " -> Save the file on insert mode
 
-"plugins
-nnoremap §  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>
-nnoremap <C-S> :w<CR>
-nnoremap <C-F7> :Tabularize /=<CR>
-"nnoremap <C-A>  :FufTaggedFile<CR>
-nnoremap <C-space> :CtrlP<CR>
-nnoremap <C-@> <C-Space> :CtrlP<CR>
+noremap <Up> <nop>| " -> disable up arrow
+noremap <Down> <nop>| " -> disable down arrow
+noremap <Left> <nop>| " -> disable left arrow
+noremap <Right> <nop>| " -> disable right arrow
 
-"php"
-autocmd FileType php nnoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
-autocmd FileType php noremap <C-L> :!pu %<CR>
-autocmd FileType php nnoremap ++  :DisablePHPFolds<CR>
-autocmd FileType php nnoremap --  :EnableFastPHPFolds<CR>
-"autocmd FileType * noremap <C-K> :call ClearFile()<CR>
-
-"Insert Mode"
-inoremap <C-S> <C-O>:w<CR>
-inoremap <C-Z> <C-O>:undo<CR>
-inoremap <C-F7> <C-O>:Tabularize /=<CR>
-autocmd FileType php inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
-autocmd FileType php inoremap <C-F5> <C-O>:InsertBothGetterSetter /=<CR>
+imap <up> <nop>| " -> disable up arrow on insert mode
+imap <down> <nop>| " -> disable down arrow on insert mode
+imap <left> <nop>| " -> disable left arrow on insert mode
+imap <right> <nop>| " -> disable right arrow on insert mode
 
 
-" Git
-nnoremap <leader>a :Gwrite<CR>
-"desactivate arrows
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-
-
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-
-"nnoremap <Esc>e  :!egrep -irn --exclude-dir=\".svn\"<Space>
-"nnoremap <Esc>e  :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  egrep -irn --exclude-dir=".svn" "<cword>" .<CR>
-"nnoremap <Esc>le  :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  egrep -irn --exclude-dir=".svn" "<cword>" /data/www/lcl/<CR>
-"nnoremap <Esc>²   :!clear && echo -e "\033[32m" && echo "<cword>"  &&  echo -e "\033[0m" &&  fclass <cword><CR>
-"PERSONAL FUNCTION"
-autocmd FileType php nnoremap <F9>   :call GoToClass('tabedit')<CR>
-autocmd FileType php nnoremap <F3>   :call GoToZendClass('tabedit')<CR>
-autocmd FileType php nnoremap <F4>   :call GoToParentZendClass('tabedit')<CR>
-autocmd FileType php nnoremap <F5>   :call GoToZendClass('e')<CR>
-autocmd FileType php nnoremap <F6>   :call GoToZendClass('vsplit')<CR>
-autocmd FileType php nnoremap <F7>   :call GoToZendClass('split')<CR>
-autocmd FileType php nnoremap <F11>  :call SearchForMethodInLibrary()<CR> 
-autocmd FileType php nnoremap <F12>  :call SearchForMethod()<CR> 
-autocmd FileType php nnoremap 2+  :call Alog()<CR>
-autocmd FileType php nnoremap 1+  :call Agp()<CR>
-autocmd FileType php nnoremap 7+  :call PuGroup()<CR>
-autocmd FileType php nnoremap 8+  :call AddPuGroup()<CR>
-
-
-"Config plugins
-let DisableAutoPHPFolding = 1
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
