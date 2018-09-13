@@ -80,10 +80,12 @@ nnoremap tt  :tabedit<Space>| " -> open a file in a new tab
 nnoremap td  :tabclose<CR>| " -> close the current tab
 nnoremap tn :tabnew<CR>| " -> open a new tab
 
-nnoremap <leader>k :m .-2<CR>==| " -> move the line to the top
-nnoremap <leader>j :m .+1<CR>==| " -> move the line to the bottom
-nnoremap <leader>jj :t .<CR>==| " -> duplicate the line to the botton
-nnoremap <leader>kk :t .-2<CR>==| " -> duplicate a line to the up
+nnoremap <leader>j :%!python -m json.tool<CR>==| " -> move the line to the bottom
+
+"nnoremap <leader>k :m .-2<CR>==| " -> move the line to the top
+"nnoremap <leader>j :m .+1<CR>==| " -> move the line to the bottom
+"nnoremap <leader>jj :t .<CR>==| " -> duplicate the line to the botton
+"nnoremap <leader>kk :t .-2<CR>==| " -> duplicate a line to the up
 
 nnoremap <leader><leader>  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>| " -> open NERDTree
 nnoremap <C-S> :w<CR>| " -> save the file
