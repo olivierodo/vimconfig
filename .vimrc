@@ -80,7 +80,7 @@ nnoremap tt  :tabedit<Space>| " -> open a file in a new tab
 nnoremap td  :tabclose<CR>| " -> close the current tab
 nnoremap tn :tabnew<CR>| " -> open a new tab
 
-nnoremap <leader>j :%!python -m json.tool<CR>==| " -> move the line to the bottom
+ "nnoremap <leader>j :%!python -m json.tool<CR>==| " -> move the line to the bottom
 
 "nnoremap <leader>k :m .-2<CR>==| " -> move the line to the top
 "nnoremap <leader>j :m .+1<CR>==| " -> move the line to the bottom
@@ -89,6 +89,7 @@ nnoremap <leader>j :%!python -m json.tool<CR>==| " -> move the line to the botto
 
 nnoremap <leader><leader>  :NERDTreeToggle<CR> <bar> :NERDTreeMirror<CR>| " -> open NERDTree
 nnoremap <C-S> :w<CR>| " -> save the file
+
 nnoremap <C-F7> :Tabularize /=<CR>| " ->
 
 inoremap <C-S> <C-O>:w<CR>| " -> Save the file on insert mode
@@ -106,3 +107,6 @@ imap <right> <nop>| " -> disable right arrow on insert mode
 
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 "autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"
+au BufNewFile,BufRead,BufReadPost *.hbs set syntax=HTML
+au BufNewFile,BufRead,BufReadPost *.vue set syntax=HTML
