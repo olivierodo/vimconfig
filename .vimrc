@@ -21,7 +21,7 @@ set tabstop=2 " -> Tab spacing of 4
 set autoread " -> Detect if the file change outside of vim
 
 syntax on " -> Alternative syntax highlighting colours for a dark background
-colorscheme mango " -> specific color
+"colorscheme mango " -> specific color
 
 set number " -> Enable number
 
